@@ -18,11 +18,23 @@ const app = express();
 await connectCloudinary();
 // allow multiple origins
 const allowedOrigins = [
-  "https://grocery-client.onrender.com", // your frontend render URL
+  "https://grocery-mern-app-main-client.onrender.com", // your frontend render URL
   "http://localhost:5173", // for local development (Vite)
 ];
 //middlewares
-app.use(cors({ origin: allowedOrigins, credentials: true }));
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true); // allow requests like Postman
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
 
