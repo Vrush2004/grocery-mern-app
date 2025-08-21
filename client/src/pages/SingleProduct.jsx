@@ -32,7 +32,7 @@ const SingleProduct = () => {
             {" "}
             {product.category}
           </Link>{" "}
-          /<span className="text-indigo-500"> {product.name}</span>
+          /<span className="text-primary"> {product.name}</span>
         </p>
 
         <div className="flex flex-col md:flex-row gap-16 mt-4">
@@ -109,7 +109,7 @@ const SingleProduct = () => {
                   navigate("/cart");
                   scrollTo(0, 0);
                 }}
-                className="w-full py-3.5 cursor-pointer font-medium bg-indigo-500 text-white hover:bg-indigo-600 transition"
+                className="w-full py-3.5 cursor-pointer font-medium bg-primary text-white hover:bg-indigo-600 transition"
               >
                 Buy now
               </button>
@@ -135,7 +135,7 @@ const SingleProduct = () => {
               navigate("/products");
               scrollTo(0, 0);
             }}
-            className="w-1/2 my-8 py-3.5 cursor-pointer font-medium bg-indigo-500 text-white hover:bg-indigo-600 transition"
+            className="w-1/2 my-8 py-3.5 cursor-pointer font-medium bg-primary text-white hover:bg-indigo-600 transition"
           >
             See More
           </button>

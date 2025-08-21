@@ -35,7 +35,7 @@ const Navbar = () => {
     if (searchQuery.length > 0) {
       navigate("/products");
     }
-  }, []);
+  }, [searchQuery]);
   return (
     <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 bg-white relative transition-all">
       <Link to="/">
@@ -149,7 +149,7 @@ const Navbar = () => {
               stroke-linejoin="round"
             />
           </svg>
-          <button className="absolute -top-2 -right-3 text-xs text-white bg-indigo-500 w-[18px] h-[18px] rounded-full">
+          <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">
             {cartCount()}
           </button>
         </div>
@@ -184,7 +184,7 @@ const Navbar = () => {
       <div
         className={`${
           open ? "flex" : "hidden"
-        } absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}
+        } absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden z-10`}
       >
         <Link onClick={() => setOpen(false)} to={"/"}>
           Home
@@ -220,7 +220,7 @@ const Navbar = () => {
               setOpen(false);
               setShowUserLogin(true);
             }}
-            className="cursor-pointer px-8 py-2 bg-indigo-500 hover:bg-indigo-600 transition text-white rounded-full"
+            className="cursor-pointer px-8 py-2 bg-primary hover:bg-indigo-600 transition text-white rounded-full"
           >
             Login
           </button>

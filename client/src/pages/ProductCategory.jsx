@@ -19,6 +19,7 @@ const ProductCategory = () => {
           <h1 className="text-3xl md:text-4xl font-medium">
             {searchCategory.text.toUpperCase()}
           </h1>
+          <div className="w-26 h-0.5 bg-primary rounded-full"></div>
         </div>
       )}     
       {filteredProducts.length > 0 ? (
@@ -31,7 +32,7 @@ const ProductCategory = () => {
         </div>
       ) : (
         <div>
-          <h1 className="text-3xl md:text-4xl font-medium">
+          <h1 className="text-3xl md:text-4xl font-medium md:mt-5 text-red-600">
             No products found
           </h1>
         </div>
