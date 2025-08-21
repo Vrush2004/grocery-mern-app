@@ -16,13 +16,14 @@ import SellerLayout from "./pages/seller/SellerLayout";
 import AddProduct from "./pages/seller/AddProduct";
 import ProductList from "./pages/seller/ProductList";
 import Orders from "./pages/seller/Orders";
+import Login from "./components/Login";
 const App = () => {
   const isSellerPath = useLocation().pathname.includes("seller");
   const { showUserLogin, isSeller } = useAppContext();
   return (
     <div className="text-default min-h-screen">
       {isSellerPath ? null : <Navbar />}
-      {showUserLogin ? <Auth /> : null}
+      {showUserLogin ? <Login /> : null}
       <Toaster />
       <div
         className={`${isSellerPath ? "" : "px-6 md:px-16 lg:px-24 xl:px-32"}`}
