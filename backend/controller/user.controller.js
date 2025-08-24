@@ -20,12 +20,12 @@ export const registerUser = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({
+    const user = await User.create({
       name,
       email,
       password: hashedPassword,
     });
-    await user.save();
+    
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
@@ -36,7 +36,8 @@ export const registerUser = async (req, res) => {
       sameSite: process.env.NODE_ENV === "production" ? "none" : "Strict", // Prevent CSRF attacks
       maxAge: 7 * 24 * 60 * 60 * 1000, // Cookie expiration time (7 days)
     });
-    res.status(201).json({
+    
+    return res.status(201).json({
       message: "User registered successfully",
       success: true,
       user: {
@@ -118,6 +119,7 @@ export const checkAuth = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
 // logout user: /api/user/logout
 export const logout = async (req, res) => {
   try {

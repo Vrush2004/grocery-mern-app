@@ -1,14 +1,14 @@
 import express from "express";
 import {
-  checkAuth,
+  sellercCheckAuth,
   sellerLogin,
   sellerLogout,
 } from "../controller/seller.controller.js";
 import { authSeller } from "../middlewares/authSeller.js";
-const router = express.Router();
+const sellerRouter = express.Router();
 
-router.post("/login", sellerLogin);
-router.get("/is-auth", authSeller, checkAuth);
-router.get("/logout", authSeller, sellerLogout);
+sellerRouter.post("/login", sellerLogin);
+sellerRouter.get("/is-auth", authSeller, sellercCheckAuth);
+sellerRouter.get("/logout", authSeller, sellerLogout);
 
-export default router;
+export default sellerRouter;

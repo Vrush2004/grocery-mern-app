@@ -109,7 +109,7 @@ const SingleProduct = () => {
                   navigate("/cart");
                   scrollTo(0, 0);
                 }}
-                className="w-full py-3.5 cursor-pointer font-medium bg-primary text-white hover:bg-indigo-600 transition"
+                className="w-full py-3.5 cursor-pointer font-medium bg-primary text-white hover:bg-primary-dark transition"
               >
                 Buy now
               </button>

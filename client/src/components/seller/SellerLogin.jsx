@@ -35,7 +35,7 @@ const SellerLogin = () => {
           className="flex flex-col gap-4 m-auto items-start p-8 py-12 w-80 sm:w-[352px] rounded-lg shadow-xl border border-gray-200 bg-white"
         >
           <p className="text-2xl font-medium m-auto">
-            <span className="text-indigo-500">Seller</span>
+            <span className="text-primary">Seller</span>
             Login
           </p>
 
@@ -45,7 +45,7 @@ const SellerLogin = () => {
               onChange={(e) => setEmail(e.target.value)}
               value={email}
               placeholder="type here"
-              className="border border-gray-200 rounded w-full p-2 mt-1 outline-indigo-500"
+              className="border border-gray-200 rounded w-full p-2 mt-1 outline-primary"
               type="email"
               required
             />
@@ -56,12 +56,12 @@ const SellerLogin = () => {
               onChange={(e) => setPassword(e.target.value)}
               value={password}
               placeholder="type here"
-              className="border border-gray-200 rounded w-full p-2 mt-1 outline-indigo-500"
+              className="border border-gray-200 rounded w-full p-2 mt-1 outline-primaru"
               type="password"
               required
             />
           </div>
-          <button className="bg-indigo-500 hover:bg-indigo-600 transition-all text-white w-full py-2 rounded-md cursor-pointer">
+          <button className="bg-primary hover:bg-indigo-600 transition-all text-white w-full py-2 rounded-md cursor-pointer">
             Login
           </button>
         </form>

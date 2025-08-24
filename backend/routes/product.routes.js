@@ -8,11 +8,11 @@ import {
   getProducts,
 } from "../controller/product.controller.js";
 import { upload } from "../config/multer.js";
-const router = express.Router();
+const productRouter = express.Router();
 
-router.post("/add-product", authSeller, upload.array("image", 4), addProduct);
-router.get("/list", getProducts);
-router.get("/id", getProductById);
-router.post("/stock", authSeller, changeStock);
+productRouter.post("/add-product", authSeller, upload.array("image", 4), addProduct);
+productRouter.get("/list", getProducts);
+productRouter.get("/id", getProductById);
+productRouter.post("/stock", authSeller, changeStock);
 
-export default router;
+export default productRouter;

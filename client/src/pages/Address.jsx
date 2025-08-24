@@ -40,6 +40,7 @@ const Address = () => {
       navigate("/cart");
     }
   }, []);
+
   return (
     <div className="mt-12 flex flex-col md:flex-row gap-6 p-6 bg-gray-100 rounded-lg shadow-md">
       {/* Left Side: Address Fields */}
@@ -162,7 +163,7 @@ const Address = () => {
           <div className="col-span-2">
             <button
               type="submit"
-              className="w-full bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-md"
+              className="w-full bg-primary hover:bg-primary-dark text-white py-2 rounded-md"
             >
               Save Address
             </button>

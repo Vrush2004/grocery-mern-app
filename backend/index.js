@@ -4,10 +4,10 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import { connectDB } from "./config/connectDB.js";
 dotenv.config();
-import userRoutes from "./routes/user.routes.js";
-import sellerRoutes from "./routes/seller.routes.js";
-import productRoutes from "./routes/product.routes.js";
-import cartRoutes from "./routes/cart.routes.js";
+import userRouter from "./routes/user.routes.js";
+import sellerRouter from "./routes/seller.routes.js";
+import productRouter from "./routes/product.routes.js";
+import cartRouter from "./routes/cart.routes.js";
 import addressRoutes from "./routes/address.routes.js";
 import orderRoutes from "./routes/order.routes.js";
 
@@ -40,14 +40,14 @@ app.use(express.json());
 
 // Api endpoints
 app.use("/images", express.static("uploads"));
-app.use("/api/user", userRoutes);
-app.use("/api/seller", sellerRoutes);
-app.use("/api/product", productRoutes);
-app.use("/api/cart", cartRoutes);
+app.use("/api/user", userRouter);
+app.use("/api/seller", sellerRouter);
+app.use("/api/product", productRouter);
+app.use("/api/cart", cartRouter);
 app.use("/api/address", addressRoutes);
 app.use("/api/order", orderRoutes);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   connectDB();
   console.log(`Server is running on port ${PORT}`);
