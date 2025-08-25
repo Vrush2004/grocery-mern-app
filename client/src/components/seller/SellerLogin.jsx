@@ -10,6 +10,7 @@ const SellerLogin = () => {
       navigate("/seller");
     }
   }, [isSeller]);
+
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
@@ -27,6 +28,7 @@ const SellerLogin = () => {
       toast.error(error.message);
     }
   };
+  
   return (
     !isSeller && (
       <div className="fixed top-0 left-0 bottom-0 right-0 z-30 flex items-center justify-center  bg-black/50 text-gray-600">

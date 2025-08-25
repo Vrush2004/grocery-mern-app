@@ -24,7 +24,7 @@ const ProductCategory = () => {
       )}     
       {filteredProducts.length > 0 ? (
         <div>
-          <div className="my-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 items-center justify-center">
+          <div className="my-15 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 items-center justify-center">
             {filteredProducts.map((product, index) => (
               <ProductCard key={index} product={product} />
             ))}
@@ -32,7 +32,7 @@ const ProductCategory = () => {
         </div>
       ) : (
         <div>
-          <h1 className="text-3xl md:text-4xl font-medium md:mt-5 text-red-600">
+          <h1 className="text-1xl md:text-2xl font-medium md:mt-65 md:mb-65 text-primary text-center">
             No products found
           </h1>
         </div>

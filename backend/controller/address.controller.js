@@ -2,11 +2,9 @@ import Address from "../models/address.model.js";
 // add address :/api/address/add
 export const addAddress = async (req, res) => {
   try {
-    const { address, userId } = req.body;
-    const savedAddress = await Address.create({
-      ...address,
-      userId: userId,
-    });
+    const { street, city, state, pincode, userId } = req.body;
+    const savedAddress = await Address.create({ street, city, state, pincode, userId });
+
     res
       .status(201)
       .json({ success: true, message: "Address added successfully" });

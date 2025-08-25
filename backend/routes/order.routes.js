@@ -7,9 +7,9 @@ import {
 } from "../controller/order.controller.js";
 import { authSeller } from "../middlewares/authSeller.js";
 
-const router = express.Router();
-router.post("/cod", authUser, placeOrderCOD);
-router.get("/user", authUser, getUserOrders);
-router.get("/seller", authSeller, getAllOrders);
+const orderRouter = express.Router();
+orderRouter.post("/cod", authUser, placeOrderCOD);
+orderRouter.get("/user", authUser, getUserOrders);
+orderRouter.get("/seller", authSeller, getAllOrders);
 
-export default router;
+export default orderRouter;

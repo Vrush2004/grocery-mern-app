@@ -26,7 +26,7 @@ const SingleProduct = () => {
   return (
     product && (
       <div className="mt-16">
-        <p>
+        <p className="mb-15">
           <Link to="/">Home</Link>/<Link to={"/products"}> Products</Link> /
           <Link to={`/products/${product.category.toLowerCase()}`}>
             {" "}
@@ -37,7 +37,7 @@ const SingleProduct = () => {
 
         <div className="flex flex-col md:flex-row gap-16 mt-4">
           <div className="flex gap-3">
-            <div className="flex flex-col gap-3">
+            {/* <div className="flex flex-col gap-3">
               {product.image.map((image, index) => (
                 <div
                   key={index}
@@ -45,7 +45,7 @@ const SingleProduct = () => {
                   className="border max-w-24 border-gray-500/30 rounded overflow-hidden cursor-pointer"
                 >
                   <img
-                    src={`http://localhost:5000/images/${image}`}
+                    src={`http://localhost:4000/images/${image}`}
                     alt={`Thumbnail ${index + 1}`}
                   />
                 </div>
@@ -54,9 +54,24 @@ const SingleProduct = () => {
 
             <div className="border border-gray-500/30 max-w-100 rounded overflow-hidden">
               <img
-                src={`http://localhost:5000/images/${thumbnail}`}
+                src={`http://localhost:4000/images/${thumbnail}`}
                 alt="Selected product"
               />
+            </div> */}
+            <div className="flex flex-col gap-3">
+              {product.image.map((image, index) => (
+                <div
+                  key={index}
+                  onClick={() => setThumbnail(image)}
+                  className="border max-w-24 border-gray-500/30 rounded overflow-hidden cursor-pointer"
+                >
+                  <img src={image} alt={`Thumbnail ${index + 1}`} />
+                </div>
+              ))}
+            </div>
+
+            <div className="border border-gray-500/30 max-w-100 rounded overflow-hidden">
+              <img src={thumbnail} alt="Selected product" />
             </div>
           </div>
 

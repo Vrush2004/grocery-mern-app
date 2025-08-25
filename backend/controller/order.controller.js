@@ -4,8 +4,7 @@ import Product from "../models/product.model.js";
 // Place order COD: /api/order/place
 export const placeOrderCOD = async (req, res) => {
   try {
-    const userId = req.user;
-    const { items, address } = req.body;
+    const { items, address, userId } = req.body;
     if (!address || !items || items.length === 0) {
       return res
         .status(400)
@@ -38,7 +37,7 @@ export const placeOrderCOD = async (req, res) => {
 // oredr details for individual user :/api/order/user
 export const getUserOrders = async (req, res) => {
   try {
-    const userId = req.user;
+    const userId = req.body;
     const orders = await Order.find({
       userId,
       $or: [{ paymentType: "COD" }, { isPaid: true }],

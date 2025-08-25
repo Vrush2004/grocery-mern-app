@@ -89,7 +89,7 @@ const Cart = () => {
     }
   };
   return products.length > 0 && cartItems ? (
-    <div className="flex flex-col md:flex-row mt-16">
+    <div className="flex flex-col md:flex-row mt-16 mb-15">
       <div className="flex-1 max-w-4xl">
         <h1 className="text-3xl font-medium mb-6">
           Shopping Cart{" "}
@@ -117,9 +117,10 @@ const Cart = () => {
               >
                 <img
                   className="max-w-full h-full object-cover"
-                  src={`http://localhost:5000/images/${product.image[0]}`}
+                  src={product.image[0]}
                   alt={product.name}
                 />
+
               </div>
               <div>
                 <p className="hidden md:block font-semibold">{product.name}</p>

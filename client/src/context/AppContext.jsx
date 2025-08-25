@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { dummyProducts } from "../assets/assets";
 import toast from "react-hot-toast";
 import axios from "axios";
+
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
 export const AppContext = createContext(null);
@@ -36,12 +37,13 @@ export const AppContextProvider = ({ children }) => {
       const { data } = await axios.get("/api/user/is-auth");
       if (data.success) {
         setUser(data.user);
-        setCartItems(data.user.cart);
+        setCartItems(data.user.cartItems);
       } else {
         toast.error(data.message);
       }
     } catch (error) {
       toast.error(error.message);
+      setUser(null);
     }
   };
 
@@ -135,6 +137,7 @@ export const AppContextProvider = ({ children }) => {
       updateCart();
     }
   }, [cartItems]);
+  
   const value = {
     navigate,
     user,

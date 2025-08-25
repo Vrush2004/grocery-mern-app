@@ -15,15 +15,18 @@ const AddProduct = () => {
     try {
       e.preventDefault();
 
+      const productData = {
+        name,
+        description: description.split('\n'),
+        category,
+        price,
+        offerPrice
+      }
       const formData = new FormData();
-      formData.append("name", name);
-      formData.append("description", description);
-      formData.append("category", category);
-      formData.append("price", price);
-      formData.append("offerPrice", offerPrice);
-
+      formData.append('productData', JSON.stringify(productData));
+      
       for (let i = 0; i < files.length; i++) {
-        formData.append("image", files[i]);
+        formData.append("images", files[i]);
       }
 
       const { data } = await axios.post("/api/product/add-product", formData);
@@ -157,7 +160,7 @@ const AddProduct = () => {
             />
           </div>
         </div>
-        <button className="px-8 py-2.5 bg-indigo-500 text-white font-medium rounded">
+        <button className="px-8 py-2.5 bg-primary text-white font-medium rounded">
           ADD
         </button>
       </form>
