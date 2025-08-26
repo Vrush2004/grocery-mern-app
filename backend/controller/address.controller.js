@@ -2,16 +2,32 @@ import Address from "../models/address.model.js";
 // add address :/api/address/add
 export const addAddress = async (req, res) => {
   try {
-    const { street, city, state, pincode, userId } = req.body;
-    const savedAddress = await Address.create({ street, city, state, pincode, userId });
+    const { firstName, lastName, email, phone, country, zipCode, street, city, state } = req.body;
 
-    res
-      .status(201)
-      .json({ success: true, message: "Address added successfully" });
+    const savedAddress = await Address.create({
+      firstName,
+      lastName,
+      email,
+      phone,
+      country,
+      zipCode,
+      street,
+      city,
+      state,
+      userId: req.userId, // from middleware
+    });
+
+    res.status(201).json({
+      success: true,
+      message: "Address added successfully",
+      address: savedAddress,
+    });
   } catch (error) {
+    console.error("Error in addAddress:", error.message);
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
 
 //get address:// /api/address/get
 export const getAddress = async (req, res) => {

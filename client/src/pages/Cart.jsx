@@ -37,20 +37,28 @@ const Cart = () => {
   };
 
   const getAddress = async () => {
-    try {
-      const { data } = await axios.get("/api/address/get");
-      if (data.success) {
-        setAddress(data.addresses);
-        if (data.addresses.length > 0) {
-          setSelectedAddress(data.addresses[0]);
-        }
-      } else {
-        toast.error(data.message);
+  try {
+    const token = localStorage.getItem("token"); // or wherever you saved it
+
+    const { data } = await axios.get("/api/address/get", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (data.success) {
+      setAddress(data.addresses);
+      if (data.addresses.length > 0) {
+        setSelectedAddress(data.addresses[0]);
       }
-    } catch (error) {
-      toast.error(error.message);
+    } else {
+      toast.error(data.message);
     }
-  };
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+
   useEffect(() => {
     if (user) {
       getAddress();
@@ -62,6 +70,7 @@ const Cart = () => {
       getCart();
     }
   }, [products, cartItems]);
+  
   const placeOrder = async () => {
     try {
       if (!selectedAddress) {

@@ -13,23 +13,30 @@ const Login = () => {
         try {
             event.preventDefault();
 
-            const {data} = await axios.post(`/api/user/${state}`, {
-                name, email, password
+            const { data } = await axios.post(`/api/user/${state}`, {
+            name,
+            email,
+            password,
             });
 
-            if(data.success){
-                navigate('/')
-                setUser(data.user)
-                setShowUserLogin(false)
-            }else{
-                toast.error(data.message)
+            if (data.success) {
+            // Save token in localStorage
+            localStorage.setItem("token", data.token);
+
+            // Save user in state
+            setUser(data.user);
+
+            // Navigate
+            navigate("/");
+            setShowUserLogin(false);
+            } else {
+            toast.error(data.message);
             }
-           
         } catch (error) {
-            toast.error(error.message)
+            toast.error(error.message);
         }
-        
-    }
+        };
+
 
   return (
     <div onClick={() => setShowUserLogin(false)} className='fixed top-0 bottom-0 left-0 right-0 z-30 flex items-center text-sm text-gray-600 bg-black/50'>

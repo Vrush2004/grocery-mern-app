@@ -9,6 +9,7 @@ const Orders = () => {
 
   const [orders, setOrders] = useState([]);
   const { axios } = useContext(AppContext);
+  
   const fetchOrders = async () => {
     try {
       const { data } = await axios.get("/api/order/seller");

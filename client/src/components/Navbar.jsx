@@ -48,7 +48,6 @@ const Navbar = () => {
       <div className="hidden sm:flex items-center gap-8">
         <Link to={"/"}>Home</Link>
         <Link to={"/products"}>All Products</Link>
-        <Link to={"/products"}>Contact</Link>
 
         <div className="hidden lg:flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">
           <input

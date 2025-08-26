@@ -20,21 +20,24 @@ const Address = () => {
     setAddress({ ...address, [e.target.name]: e.target.value });
   };
 
-  const submitHanlder = async (e) => {
-    try {
+    const submitHanlder = async (e) => {
       e.preventDefault();
-      const { data } = await axios.post("/api/address/add", { address });
-      console.log("data", data);
-      if (data.success) {
-        toast.success(data.message);
-        navigate("/cart");
-      } else {
-        toast.error(data.message);
+      try {
+        const { data } = await axios.post("/api/address/add", {
+          ...address,
+        }, {withCredentials: true}, { headers: { Authorization: `Bearer ${token}` } });
+        console.log("data", data);
+        if (data.success) {
+          toast.success(data.message);
+          navigate("/cart");
+        } else {
+          toast.error(data.message);
+        }
+      } catch (error) {
+        toast.error(error.response?.data?.message || error.message);
       }
-    } catch (error) {
-      toast.error(error.message);
-    }
-  };
+    };
+
   useEffect(() => {
     if (!user) {
       navigate("/cart");
@@ -57,10 +60,10 @@ const Address = () => {
             <input
               type="text"
               name="firstName"
-              value={address.firstName}
+              value={address.firstName ||"" }
               onChange={handleChange}
               className="w-full p-2 border rounded-md"
-              required
+            
             />
           </div>
 
@@ -69,10 +72,10 @@ const Address = () => {
             <input
               type="text"
               name="lastName"
-              value={address.lastName}
+              value={address.lastName ||"" }
               onChange={handleChange}
               className="w-full p-2 border rounded-md"
-              required
+              
             />
           </div>
 
@@ -81,10 +84,10 @@ const Address = () => {
             <input
               type="email"
               name="email"
-              value={address.email}
+              value={address.email ||"" }
               onChange={handleChange}
               className="w-full p-2 border rounded-md"
-              required
+              
             />
           </div>
 
@@ -93,10 +96,10 @@ const Address = () => {
             <input
               type="text"
               name="street"
-              value={address.street}
+              value={address.street ||"" }
               onChange={handleChange}
               className="w-full p-2 border rounded-md"
-              required
+              
             />
           </div>
 
@@ -105,10 +108,10 @@ const Address = () => {
             <input
               type="text"
               name="city"
-              value={address.city}
+              value={address.city ||"" }
               onChange={handleChange}
               className="w-full p-2 border rounded-md"
-              required
+              
             />
           </div>
 
@@ -117,10 +120,10 @@ const Address = () => {
             <input
               type="text"
               name="state"
-              value={address.state}
+              value={address.state ||"" }
               onChange={handleChange}
               className="w-full p-2 border rounded-md"
-              required
+              
             />
           </div>
 
@@ -129,10 +132,10 @@ const Address = () => {
             <input
               type="number"
               name="zipCode"
-              value={address.zipCode}
+              value={address.zipCode ||"" }
               onChange={handleChange}
               className="w-full p-2 border rounded-md"
-              required
+              
             />
           </div>
 
@@ -141,10 +144,9 @@ const Address = () => {
             <input
               type="text"
               name="country"
-              value={address.country}
+              value={address.country ||"" }
               onChange={handleChange}
               className="w-full p-2 border rounded-md"
-              required
             />
           </div>
 
@@ -153,10 +155,10 @@ const Address = () => {
             <input
               type="number"
               name="phone"
-              value={address.phone}
+              value={address.phone ||"" }
               onChange={handleChange}
               className="w-full p-2 border rounded-md"
-              required
+              
             />
           </div>
 
